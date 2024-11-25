@@ -1,0 +1,147 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #051c90;
+    color: #fff;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-cta {
+    margin-top: 20px;
+}
+
+.hero-cta .btn-primary {
+    background-color: #09d2e7;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-cta .btn-primary:hover {
+    background-color: #007ea7;
+}
+
+.hero-cta .compare-link {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.hero-image {
+    max-width: 40%;
+    border-radius: 10px;
+}
+
+/* Section Styles */
+section {
+    padding: 40px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 28px;
+    color: #051c90;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+section .btn-primary {
+    background-color: #051c90;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+section .btn-primary:hover {
+    background-color: #09d2e7;
+}
+
+/* CTA Styles for Purchase */
+.cta {
+    text-align: center;
+    padding: 40px;
+    background-color: #e2f4ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta h2 {
+    font-size: 28px;
+    color: #051c90;
+    margin-bottom: 20px;
+}
+
+.cta button {
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta .btn-primary {
+    background-color: #09d2e7;
+    color: #fff;
+}
+
+.cta .btn-primary:hover {
+    background-color: #007ea7;
+}
+
+.cta .btn-secondary {
+    background-color: #051c90;
+    color: #fff;
+}
+
+.cta .btn-secondary:hover {
+    background-color: #007ea7;
+}

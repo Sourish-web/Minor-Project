@@ -1,0 +1,62 @@
+/* processPurchase.css */
+
+/* Specific styling for the purchase confirmation page */
+.purchase-confirmation {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.purchase-confirmation h2 {
+    color: #4CAF50;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.purchase-confirmation p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.purchase-confirmation .btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-confirmation .btn-primary:hover {
+    background-color: #45a049;
+}
+
+.purchase-confirmation .info-text {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* Style for responsive layout */
+@media (max-width: 768px) {
+    .purchase-confirmation {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .purchase-confirmation h2 {
+        font-size: 2rem;
+    }
+
+    .purchase-confirmation p {
+        font-size: 1rem;
+    }
+}

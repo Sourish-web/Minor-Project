@@ -1,0 +1,226 @@
+/* Main Content Section */
+.home-content-wrapper {
+    display: flex;
+    padding: 20px;
+    background-color: rgba(244, 244, 244, 0.6); /* Light grey with more transparency */
+}
+
+.home-content {
+    flex: 0 0 70%;
+    padding-right: 20px;
+}
+
+.side-content {
+    flex: 0 0 30%;
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Increased transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.feature-card {
+    background-color: rgba(255, 255, 255, 0.7); /* Increased transparency */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Why Us Section */
+.why-us {
+    background-color: rgba(230, 247, 255, 0.6); /* More transparent light blue */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.why-us h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.why-us p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Claim Performance Section */
+.claim-performance {
+    background-color: rgba(255, 255, 255, 0.7); /* More transparent white */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.claim-performance h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.claim-performance p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Important Notice */
+.notice-box {
+    background-color: rgba(255, 204, 0, 0.7); /* More transparent yellow */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.notice-box h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.notice-box p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Slideshow Section */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Fixed slideshow width */
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Hide overflow to ensure clean edges */
+}
+
+.slide {
+    display: none;
+}
+
+.fade {
+    animation: fade 5s infinite;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Image size fix */
+.slideshow-container img {
+    width: 100%; /* Fill the width of the container */
+    height: 100%; /* Fill the height of the container */
+    object-fit: cover; /* Ensure the image covers the container, maintaining aspect ratio */
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #fff;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.3); /* More transparent background */
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Section */
+.footer {
+    background-color: rgba(51, 51, 51, 0.7); /* Transparent dark background */
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-content h3 {
+    margin-top: 0;
+}
+
+.footer-content .contact-info,
+.footer-content .quick-links {
+    flex: 1;
+}
+
+.footer-content .social-media {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.footer-note {
+    text-align: center;
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* Social Media Icon Styles */
+/* Footer Social Media Icons */
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 24px; /* Adjust this value to make the icons smaller */
+    height: 24px; /* Adjust this value to maintain aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.1); /* Slight hover effect for icons */
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: rgba(249, 249, 249, 0.7); /* More transparent light grey */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.testimonials p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Vision Section */
+.vision-content p {
+    font-size: 16px;
+    color: #555;
+}

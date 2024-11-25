@@ -1,0 +1,102 @@
+/* Styling for About Us page */
+.content {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    max-width: 800px;
+    margin: 40px auto; /* Center align content */
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #2c3e50;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.6;
+    color: #4f4f4f;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    color: #4f4f4f;
+}
+
+ul li strong {
+    color: #2c3e50;
+}
+
+.introduction,
+.mission,
+.vision,
+.values,
+.contact-info {
+    margin-bottom: 30px;
+}
+
+/* Specific Styling for Navbar */
+.navbar {
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    p {
+        font-size: 0.95em;
+    }
+}
