@@ -1,120 +1,130 @@
-/* Reset some default styling */
-* {
+/* Global settings */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* Body styling with a background image */
+/* Background image */
 body {
-    background-image: url('../images/bg.jpg'); /* Path to your background image */
+    background: url('../images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Container for login form */
-.container {
-    background-color: rgba(255, 255, 255, 0.92); /* Semi-transparent white background */
-    padding: 2em;
-    width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    height: 100vh;
+    color: white;
     text-align: center;
 }
 
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 1em;
-    color: #051c90;
-}
-
-/* Form elements styling */
-form label {
-    display: block;
-    text-align: left;
-    font-weight: bold;
-    color: #051c90;
-}
-
-form input[type="text"],
-form input[type="password"] {
+/* Container for centering content */
+.container {
     width: 100%;
-    padding: 10px;
-    margin: 0.5em 0 1.5em 0;
-    border-radius: 5px;
-    border: 1px solid #051c90;
-    font-size: 1em;
+    max-width: 500px;
+    padding: 20px;
 }
 
-form input[type="submit"],
-form input[type="reset"] {
-    width: 45%;
-    padding: 10px;
+/* Login Box */
+.login-box {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for form */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Header for Login */
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Textbox styling */
+.textbox {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.textbox input {
+    width: 100%;
+    padding: 15px;
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.textbox input:focus {
+    border-color: #4CAF50; /* Green border on focus */
+}
+
+.textbox label {
+    position: absolute;
+    top: -18px;
+    left: 10px;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+/* Button styles */
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
     border: none;
     border-radius: 5px;
-    font-size: 1em;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;
+    margin-top: 10px;
 }
 
-/* Button colors */
-form input[type="submit"] {
-    background-color: #051c90; /* Dark blue for login */
-    color: #fff;
+.btn:hover {
+    background-color: #45a049;
 }
 
-form input[type="reset"] {
-    background-color: #09d2e7; /* Cyan for reset */
-    color: #fff;
+.reset {
+    background-color: #f44336; /* Red for Reset */
 }
 
-form input[type="submit"]:hover {
-    background-color: #344fa7;
+.reset:hover {
+    background-color: #e53935;
 }
 
-form input[type="reset"]:hover {
-    background-color: #33d9eb;
+/* Register link */
+.actions {
+    margin-top: 10px;
 }
 
-/* Link for registration */
-a {
-    display: block;
-    margin-top: 1em;
-    color: #051c90;
+.register-link {
+    font-size: 14px;
+    color: #4CAF50;
     text-decoration: none;
-    font-size: 0.9em;
 }
 
-a:hover {
+.register-link:hover {
     text-decoration: underline;
-    color: #09d2e7;
 }
 
-/* Error message styling */
+/* Error message */
 .error-message {
-    color: #e53935;
-    margin-top: 1em;
-    font-size: 0.9em;
-}
-
-/* Rules list in Quote Calculator */
-.rules h3 {
-    color: #051c90;
-    margin-bottom: 1em;
-}
-
-.rules ul {
-    color: #333;
-    list-style-type: square;
-    padding-left: 20px;
-}
-
-.rules li strong {
-    color: #051c90;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
 }

@@ -19,6 +19,9 @@
 </head>
 <body>
 
+
+
+
     <div class="container">
         <h2>Register</h2>
 

@@ -12,6 +12,21 @@
     <link rel="stylesheet" href="resources/css/insuranceProducts.css">
 </head>
 <body>
+	<%-- Session Validation --%>
+<%
+    // Get the session object without creating a new one
+    HttpSession mysession = request.getSession(false);
+
+    // Check if the session exists and if the username attribute is set
+    if (mysession == null || mysession.getAttribute("username") == null) {
+        // Redirect to login page if session is invalid
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    // Retrieve the username from the session
+    String username = (String) mysession.getAttribute("username");
+%>
 
     <!-- Navbar Section -->
     <nav class="navbar">
@@ -31,51 +46,61 @@
     </nav>
 
     <!-- Main Content Section -->
-    <div class="content">
-        <h2>Our Insurance Products</h2>
+    <section class="product-list-section">
+        <h1>Our Insurance Products</h1>
 
-        <div class="products-container">
-            <!-- Life Insurance Plan Card -->
-            <div class="product-card">
-                <img src="resources/images/lifeins.png" alt="Life Insurance" class="product-image">
-                <div class="product-details">
-                    <h3>Term Life Insurance</h3>
-                    <p>Affordable and flexible coverage to protect your loved ones.</p>
-                    <a href="planDetails.jsp?plan=termLife" class="btn-details">Learn More</a>
-                </div>
-            </div>
-
-            <!-- Family Insurance Plan Card -->
-            <div class="product-card">
-                <img src="resources/images/fam.png" alt="Family Insurance" class="product-image">
-                <div class="product-details">
-                    <h3>Family Insurance Plan</h3>
-                    <p>Comprehensive coverage for your entire family with one simple plan.</p>
-                    <a href="planDetails.jsp?plan=familyInsurance" class="btn-details">Learn More</a>
-                </div>
-            </div>
-
-            <!-- Health Insurance Plan Card -->
-            <div class="product-card">
-                <img src="resources/images/health.png" alt="Health Insurance" class="product-image">
-                <div class="product-details">
-                    <h3>Health Insurance</h3>
-                    <p>Secure your health and well-being with flexible and comprehensive health coverage.</p>
-                    <a href="planDetails.jsp?plan=healthInsurance" class="btn-details">Learn More</a>
-                </div>
-            </div>
-
-            <!-- Home Insurance Plan Card -->
-            <div class="product-card">
-                <img src="resources/images/homeins.png" alt="Home Insurance" class="product-image">
-                <div class="product-details">
-                    <h3>Home Insurance</h3>
-                    <p>Protect your home and assets against unforeseen circumstances.</p>
-                    <a href="planDetails.jsp?plan=homeInsurance" class="btn-details">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        <%
+            // Database connection to fetch insurance products
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
+                    String query = "SELECT sr_no, product_name, plan_no, uin_no FROM insurance_products";
+                    try (PreparedStatement ps = con.prepareStatement(query);
+                         ResultSet rs = ps.executeQuery()) {
+                        if (rs.isBeforeFirst()) {
+        %>
+                            <table class="product-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Product Name</th>
+                                        <th>Plan No.</th>
+                                        <th>UIN No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+        <%
+                            while (rs.next()) {
+                                int srNo = rs.getInt("sr_no");
+                                String productName = rs.getString("product_name");
+                                String planNo = rs.getString("plan_no");
+                                String uinNo = rs.getString("uin_no");
+        %>
+                                    <tr>
+                                        <td><%= srNo %></td>
+                                        <td><%= productName %></td>
+                                        <td><%= planNo %></td>
+                                        <td><%= uinNo %></td>
+                                    </tr>
+        <%
+                            }
+        %>
+                                </tbody>
+                            </table>
+        <%
+                        } else {
+        %>
+                            <p>No insurance products available at the moment.</p>
+        <%
+                        }
+                    }
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                out.println("<p>Error fetching insurance products. Please try again later.</p>");
+                e.printStackTrace();
+            }
+        %>
+    </section>
 
     <!-- Footer Section -->
     <footer>

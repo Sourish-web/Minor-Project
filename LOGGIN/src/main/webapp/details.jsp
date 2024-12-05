@@ -6,7 +6,23 @@
     <title>Term Life Insurance Details</title>
     <link rel="stylesheet" href="resources/css/details.css">
 </head>
-<body>
+<body><%-- Session Validation --%>
+<%
+    // Get the session object without creating a new one
+    HttpSession mysession = request.getSession(false);
+
+    // Check if the session exists and if the username attribute is set
+    if (mysession == null || mysession.getAttribute("username") == null) {
+        // Redirect to login page if session is invalid
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    // Retrieve the username from the session
+    String username = (String) mysession.getAttribute("username");
+%>
+
+
 
     <!-- Hero Section -->
     <section class="hero">

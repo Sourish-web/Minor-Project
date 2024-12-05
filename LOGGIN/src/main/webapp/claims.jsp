@@ -9,22 +9,41 @@
 </head>
 <body>
 
-    <!-- Navbar Section -->
-    <nav class="navbar">
-        <!-- Logo -->
-        <div class="logo">InsuranceApp</div>
+<%-- Session Validation --%>
+<%
+    // Get the session object without creating a new one
+    HttpSession mysession = request.getSession(false);
 
-        <!-- Navigation Links -->
-        <ul>
-            <li><a href="welcome.jsp">InsuranceApp</a></li>
-            <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
-            <li><a href="insuranceProduct.jsp">Insurance Products</a></li>
-            <li><a href="faq.jsp">FAQ</a></li>
-            <li><a href="claims.jsp">Claims</a></li>
-            <li><a href="aboutUs.jsp">About Us</a></li>
-            <li><a href="LogoutServlet" class="logout">Logout</a></li>
-        </ul>
-    </nav>
+    // Check if the session exists and if the username attribute is set
+    if (mysession == null || mysession.getAttribute("username") == null) {
+        // Redirect to login page if session is invalid
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    // Retrieve the username from the session
+    String username = (String) mysession.getAttribute("username");
+%>
+
+
+    <!-- Navbar Section -->
+<nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">InsuranceApp</div>
+
+    <!-- Navigation Links -->
+    <ul>
+        <li><a href="welcome.jsp">InsuranceApp</a></li>
+        <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
+        <li><a href="insuranceProduct.jsp">Insurance Products</a></li>
+        <li><a href="faq.jsp">FAQ</a></li>
+        <li><a href="claims.jsp">Claims</a></li>
+        <li><a href="aboutUs.jsp">About Us</a></li>
+        <!-- Show the username beside logout -->
+        <li><span class="username">Welcome, <%= username %></span></li>
+        <li><a href="LogoutServlet" class="logout">Logout</a></li>
+    </ul>
+</nav>
 
     <!-- Main Content Section -->
     <div class="content-container">

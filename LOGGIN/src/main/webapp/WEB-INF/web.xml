@@ -2,15 +2,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
   <display-name>LOGGIN</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
+    <welcome-file>welcome.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
+    <description>Handles user login functionality</description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cscorner.LoginServlet</servlet-class>
@@ -20,27 +15,7 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>CalculateQuoteServlet</display-name>
-    <servlet-name>CalculateQuoteServlet</servlet-name>
-    <servlet-class>cscorner.CalculateQuoteServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CalculateQuoteServlet</servlet-name>
-    <url-pattern>/CalculateQuoteServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LogoutServlet</display-name>
-    <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>cscorner.LogoutServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LogoutServlet</servlet-name>
-    <url-pattern>/LogoutServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
+    <description>Handles user registration</description>
     <display-name>RegisterServlet</display-name>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>cscorner.RegisterServlet</servlet-class>
@@ -50,7 +25,17 @@
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description>Handles user logout</description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>cscorner.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Processes insurance claims</description>
     <display-name>ClaimServlet</display-name>
     <servlet-name>ClaimServlet</servlet-name>
     <servlet-class>cscorner.ClaimServlet</servlet-class>
@@ -60,7 +45,7 @@
     <url-pattern>/ClaimServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description>Handles plan purchases</description>
     <display-name>PurchasePlanServlet</display-name>
     <servlet-name>PurchasePlanServlet</servlet-name>
     <servlet-class>cscorner.PurchasePlanServlet</servlet-class>
@@ -68,5 +53,145 @@
   <servlet-mapping>
     <servlet-name>PurchasePlanServlet</servlet-name>
     <url-pattern>/PurchasePlanServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Validates user sessions</description>
+    <display-name>SessionValidationServlet</display-name>
+    <servlet-name>SessionValidationServlet</servlet-name>
+    <servlet-class>cscorner.SessionValidationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionValidationServlet</servlet-name>
+    <url-pattern>/session-validation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Handles admin login</description>
+    <display-name>AdminLoginServlet</display-name>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>cscorner.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/AdminLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Handles admin operations</description>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>cscorner.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Adds a new user</description>
+    <display-name>AddUserServlet</display-name>
+    <servlet-name>AddUserServlet</servlet-name>
+    <servlet-class>cscorner.AddUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserServlet</servlet-name>
+    <url-pattern>/AddUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Edits an existing user</description>
+    <display-name>EditUserServlet</display-name>
+    <servlet-name>EditUserServlet</servlet-name>
+    <servlet-class>cscorner.EditUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditUserServlet</servlet-name>
+    <url-pattern>/EditUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Deletes a user</description>
+    <display-name>DeleteUserServlet</display-name>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>cscorner.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/DeleteUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Adds a new admin</description>
+    <display-name>AddAdminServlet</display-name>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <servlet-class>cscorner.AddAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <url-pattern>/AddAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Deletes an admin</description>
+    <display-name>DeleteAdminServlet</display-name>
+    <servlet-name>DeleteAdminServlet</servlet-name>
+    <servlet-class>cscorner.DeleteAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAdminServlet</servlet-name>
+    <url-pattern>/DeleteAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Adds a new notice</description>
+    <display-name>AddNoticeServlet</display-name>
+    <servlet-name>AddNoticeServlet</servlet-name>
+    <servlet-class>cscorner.AddNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNoticeServlet</servlet-name>
+    <url-pattern>/AddNoticeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Updates an existing notice</description>
+    <display-name>UpdateNoticeServlet</display-name>
+    <servlet-name>UpdateNoticeServlet</servlet-name>
+    <servlet-class>cscorner.UpdateNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateNoticeServlet</servlet-name>
+    <url-pattern>/UpdateNoticeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Deletes a notice</description>
+    <display-name>DeleteNoticeServlet</display-name>
+    <servlet-name>DeleteNoticeServlet</servlet-name>
+    <servlet-class>cscorner.DeleteNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteNoticeServlet</servlet-name>
+    <url-pattern>/DeleteNoticeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminInsuranceProductServlet</display-name>
+    <servlet-name>AdminInsuranceProductServlet</servlet-name>
+    <servlet-class>cscorner.AdminInsuranceProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminInsuranceProductServlet</servlet-name>
+    <url-pattern>/AdminInsuranceProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddInsuranceProductServlet</display-name>
+    <servlet-name>AddInsuranceProductServlet</servlet-name>
+    <servlet-class>cscorner.AddInsuranceProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddInsuranceProductServlet</servlet-name>
+    <url-pattern>/AddInsuranceProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteInsuranceProductServlet</display-name>
+    <servlet-name>DeleteInsuranceProductServlet</servlet-name>
+    <servlet-class>cscorner.DeleteInsuranceProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteInsuranceProductServlet</servlet-name>
+    <url-pattern>/DeleteInsuranceProductServlet</url-pattern>
   </servlet-mapping>
 </web-app>

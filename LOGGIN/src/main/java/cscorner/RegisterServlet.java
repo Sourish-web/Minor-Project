@@ -1,7 +1,6 @@
 package cscorner;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,8 +21,6 @@ public class RegisterServlet extends HttpServlet {
 
         Connection con = null;
         PreparedStatement ps = null;
-        PrintWriter out = response.getWriter();
-
         try {
             // Establish database connection
             Class.forName("com.mysql.cj.jdbc.Driver");

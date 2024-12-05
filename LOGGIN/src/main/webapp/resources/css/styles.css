@@ -153,3 +153,76 @@ p {
     background-color: #444;
     color: #ffd700;
 }
+/* Styling for the username */
+.username {
+    font-weight: bold;
+    color: #4CAF50; /* A green color for visibility */
+    padding-right: 15px; /* Space between username and logout button */
+    font-size: 1.1em; /* Slightly larger font size */
+}
+
+/* Optional: Style the logout link to make it stand out */
+.logout {
+    color: #d9534f; /* Red color for logout link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout:hover {
+    color: #c9302c; /* Darker red when hovering */
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+/* Footer Section */
+.footer {
+    background-color: rgba(51, 51, 51, 0.7); /* Transparent dark background */
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-content h3 {
+    margin-top: 0;
+}
+
+.footer-content .contact-info,
+.footer-content .quick-links {
+    flex: 1;
+}
+
+.footer-content .social-media {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.footer-note {
+    text-align: center;
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* Social Media Icon Styles */
+/* Footer Social Media Icons */
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 24px; /* Adjust this value to make the icons smaller */
+    height: 24px; /* Adjust this value to maintain aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.1); /* Slight hover effect for icons */
+}
+
+
