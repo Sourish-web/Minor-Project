@@ -34,6 +34,8 @@
                 <li><a href="manageUsers.jsp">Manage Users</a></li>
                 <li><a href="editNotices.jsp">Edit Notices</a></li>
                 <li><a href="adminInsuranceProduct.jsp" class="active">Manage Products</a></li>
+                <li><a href="adminClaims.jsp">Manage Claims</a></li>
+                <li><a href="adminFaq.jsp">Manage FAQs</a></li>
                 <li><a href="LogoutServlet">Logout</a></li>
             </ul>
         </nav>
@@ -55,6 +57,9 @@
             <label for="uin_no">UIN No.:</label><br>
             <input type="text" id="uin_no" name="uin_no" required><br><br>
 
+            <label for="plan_details">Plan Details:</label><br>
+            <textarea id="plan_details" name="plan_details" rows="4" cols="50" required></textarea><br><br>
+
             <button type="submit">Add Product</button>
         </form>
 
@@ -65,7 +70,7 @@
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
-                    String query = "SELECT sr_no, product_name, plan_no, uin_no FROM insurance_products";
+                    String query = "SELECT sr_no, product_name, plan_no, uin_no, plan_details FROM insurance_products";
                     try (PreparedStatement ps = con.prepareStatement(query);
                          ResultSet rs = ps.executeQuery()) {
                         if (rs.isBeforeFirst()) {
@@ -77,6 +82,7 @@
                                         <th>Product Name</th>
                                         <th>Plan No.</th>
                                         <th>UIN No.</th>
+                                        <th>Plan Details</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -87,12 +93,14 @@
                                 String productName = rs.getString("product_name");
                                 String planNo = rs.getString("plan_no");
                                 String uinNo = rs.getString("uin_no");
+                                String planDetails = rs.getString("plan_details");
         %>
                                     <tr>
                                         <td><%= srNo %></td>
                                         <td><%= productName %></td>
                                         <td><%= planNo %></td>
                                         <td><%= uinNo %></td>
+                                        <td><%= planDetails %></td>
                                         <td>
                                             <a href="editInsuranceProduct.jsp?sr_no=<%= srNo %>">Edit</a> | 
                                             <form action="DeleteInsuranceProductServlet" method="post" style="display:inline;">

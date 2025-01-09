@@ -91,6 +91,35 @@
             </ul>
         </section>
     </div>
+    <!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><strong>Address:</strong> 123 Insurance Ave, Finance City, Country</p>
+            <p><strong>Email:</strong> support@insurancehub.com</p>
+            <p><strong>Phone:</strong> +1 234 567 890</p>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="quoteCalculator.jsp">Get a Quote</a></li>
+                <li><a href="insuranceProduct.jsp">Our Products</a></li>
+                <li><a href="faq.jsp">FAQ</a></li>
+                <li><a href="claims.jsp">Submit a Claim</a></li>
+            </ul>
+        </div>
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <p>
+                <a href="#"><img src="resources/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="resources/images/twitter.jpeg" alt="Twitter"></a>
+                <a href="#"><img src="resources/images/instagram.webp" alt="Instagram"></a>
+            </p>
+        </div>
+    </div>
+    <p class="footer-note">&copy; 2024 Insurance Hub. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>

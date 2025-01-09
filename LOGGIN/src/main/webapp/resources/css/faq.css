@@ -31,8 +31,8 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.faq-item h3 {
-    font-size: 18px;
+.faq-item h4 {
+    font-size: 20px;
     color: #444;
     margin-bottom: 10px;
 }
@@ -49,4 +49,32 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Question Submission Form */
+.question-form {
+    margin-bottom: 20px;
+}
 
+.question-form h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.question-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.question-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question-form button:hover {
+    background-color: #45a049;
+}

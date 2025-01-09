@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/dashboard.css">
 </head>
 <body>
-    <!-- Header section -->
+<!-- Header Section -->
     <header>
         <h1>Admin Dashboard</h1>
         <nav>
@@ -28,7 +28,9 @@
                 <li><a href="adminDashboard.jsp">Dashboard</a></li>
                 <li><a href="manageUsers.jsp">Manage Users</a></li>
                 <li><a href="editNotices.jsp">Edit Notices</a></li>
-                <li><a href="adminInsuranceProduct.jsp" class="active">Manage Products</a></li>
+                <li><a href="adminInsuranceProduct.jsp">Manage Products</a></li>
+                <li><a href="adminClaims.jsp">Manage Claims</a></li>
+                <li><a href="adminFaq.jsp" class="active">Manage FAQs</a></li>
                 <li><a href="LogoutServlet">Logout</a></li>
             </ul>
         </nav>

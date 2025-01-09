@@ -8,7 +8,7 @@
 <body>
     <h2>Add User</h2>
     <form method="POST" action="addUserServlet">
-
+ 
         <label for="username">Username: </label>
         <input type="text" id="username" name="username" required><br><br>
         

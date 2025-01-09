@@ -22,16 +22,16 @@
     }
 %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Notices - Admin Dashboard</title>
+    <title>Manage Claims - Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="resources/css/dashboard.css">
 </head>
 <body>
+    <!-- Header section -->
     <header>
         <h1>Admin Dashboard</h1>
         <nav>
@@ -49,22 +49,16 @@
 
     <!-- Main Content Section -->
     <section class="main-content">
-        <!-- Add New Notice Form -->
-        <h2>Add New Notice</h2>
-        <form action="AddNoticeServlet" method="post">
-            <label for="notice">Notice Content:</label><br>
-            <textarea id="notice" name="notice" rows="4" cols="50" required></textarea><br><br>
-            <button type="submit">Add Notice</button>
-        </form>
+        <h2>Manage Claims</h2>
 
-        <!-- Manage Existing Notices -->
-        <h2>Manage Existing Notices</h2>
+        <!-- Manage Existing Claims -->
+        <h3>Existing Claims</h3>
         <%
-            // Database connection to fetch all notices
+            // Database connection to fetch all claims
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
-                    String query = "SELECT id, notice, created_at FROM notices ORDER BY created_at DESC";
+                    String query = "SELECT id, username, claimant_name, policy_number, claim_amount, claim_details, status, created_at FROM claims ORDER BY created_at DESC";
                     try (PreparedStatement ps = con.prepareStatement(query);
                          ResultSet rs = ps.executeQuery()) {
                         if (rs.isBeforeFirst()) {
@@ -73,7 +67,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Notice</th>
+                        <th>Username</th>
+                        <th>Claimant Name</th>
+                        <th>Policy Number</th>
+                        <th>Claim Amount (INR)</th>
+                        <th>Details</th>
+                        <th>Status</th>
                         <th>Created At</th>
                         <th>Actions</th>
                     </tr>
@@ -82,16 +81,37 @@
         <%
                             while (rs.next()) {
                                 int id = rs.getInt("id");
-                                String notice = rs.getString("notice");
+                                String username = rs.getString("username");
+                                String claimantName = rs.getString("claimant_name");
+                                String policyNumber = rs.getString("policy_number");
+                                double claimAmount = rs.getDouble("claim_amount");
+                                String claimDetails = rs.getString("claim_details");
+                                String status = rs.getString("status");
                                 String createdAt = rs.getString("created_at");
         %>
                     <tr>
                         <td><%= id %></td>
-                        <td><%= notice %></td>
+                        <td><%= username %></td>
+                        <td><%= claimantName %></td>
+                        <td><%= policyNumber %></td>
+                        <td><%= claimAmount %></td>
+                        <td><%= claimDetails %></td>
+                        <td><%= status %></td>
                         <td><%= createdAt %></td>
                         <td>
-                            <a href="editNotice.jsp?id=<%= id %>">Edit</a> |
-                            <form action="DeleteNoticeServlet" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this notice?');">
+                            <!-- Update Claim Status -->
+                            <form action="UpdateClaimStatusServlet" method="post" style="display:inline;">
+                                <input type="hidden" name="claimId" value="<%= id %>">
+                                <select name="status">
+                                    <option value="Pending" <%= status.equals("Pending") ? "selected" : "" %>>Pending</option>
+                                    <option value="Approved" <%= status.equals("Approved") ? "selected" : "" %>>Approved</option>
+                                    <option value="Rejected" <%= status.equals("Rejected") ? "selected" : "" %>>Rejected</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+
+                            <!-- Delete Claim -->
+                            <form action="DeleteClaimServlet" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this claim?');">
                                 <input type="hidden" name="id" value="<%= id %>">
                                 <button type="submit">Delete</button>
                             </form>
@@ -105,13 +125,13 @@
         <%
                         } else {
         %>
-            <p>No notices available to manage.</p>
+            <p>No claims available to manage.</p>
         <%
                         }
                     }
                 }
             } catch (ClassNotFoundException | SQLException e) {
-                out.println("<p>Error fetching notices. Please try again later.</p>");
+                out.println("<p>Error fetching claims. Please try again later.</p>");
                 e.printStackTrace();
             }
         %>

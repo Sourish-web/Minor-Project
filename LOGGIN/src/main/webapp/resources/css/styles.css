@@ -1,14 +1,23 @@
 /* Global Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Flexbox layout for the body */
+    min-height: 100vh; /* Ensures the body takes up at least the full viewport height */
     background-image: url('../images/bg.jpg'); /* Set the background image */
     background-size: cover; /* Ensure the background covers the full page */
     background-position: center; /* Center the background image */
     background-attachment: fixed; /* Keep the background fixed while scrolling */
     color: #333; /* Text color for better readability */
+}
+
+.content-container {
+    flex: 1; /* Ensures the content container grows to fill available space */
+    padding-bottom: 20px; /* Prevents content from overlapping the footer */
 }
 
 /* Navbar Styles */
@@ -65,125 +74,22 @@ body {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* Footer Social Media Icons */
-.footer .social-media img {
-    width: 24px; /* Smaller size for icons */
-    height: 24px;
-    margin: 5px;
-    transition: transform 0.3s ease;
-}
-
-.footer .social-media img:hover {
-    transform: scale(1.2); /* Slight zoom effect on hover */
-}
-
-/* General Content Section */
-.home-content-wrapper {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8); /* Slight white background for content sections */
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-h1, h2, h3, h4 {
-    color: #222;
-}
-
-p {
-    line-height: 1.6;
-}
-
-/* Testimonials Section */
-.testimonials {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Additional Content Styling */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.feature-card {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.feature-card img {
-    width: 100%;
-    max-width: 150px;
-    margin-bottom: 10px;
-}
-
-/* Contact Form & Other Sections */
-.footer {
-    background-color: #222;
-    padding: 40px 20px;
-    color: #fff;
-}
-
-.footer h3 {
-    margin-top: 0;
-}
-
-.footer-note {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-/* Navbar Links */
-.navbar li a {
-    text-decoration: none;
-    color: white; /* Default color for links */
-    padding: 10px;
-    font-size: 16px;
-    text-transform: uppercase;
-    border-radius: 5px;
-}
-
-.navbar li a:hover {
-    background-color: #444;
-    color: #ffd700;
-}
-/* Styling for the username */
-.username {
-    font-weight: bold;
-    color: #4CAF50; /* A green color for visibility */
-    padding-right: 15px; /* Space between username and logout button */
-    font-size: 1.1em; /* Slightly larger font size */
-}
-
-/* Optional: Style the logout link to make it stand out */
-.logout {
-    color: #d9534f; /* Red color for logout link */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.logout:hover {
-    color: #c9302c; /* Darker red when hovering */
-    text-decoration: underline; /* Underline on hover */
-}
-
-
 /* Footer Section */
 .footer {
-    background-color: rgba(51, 51, 51, 0.7); /* Transparent dark background */
+    background-color: rgba(51, 51, 51, 0.8); /* Transparent dark background */
     color: #fff;
-    padding: 20px 0;
+    padding: 20px;
+    width: 100%;
+    position: sticky; /* Ensures footer sticks to the bottom of the page */
+    bottom: 0;
+    margin-top: auto; /* Pushes the footer to the bottom when there's less content */
 }
 
 .footer-content {
     display: flex;
+    flex-wrap: wrap; /* Allow footer content to wrap on smaller screens */
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
@@ -194,6 +100,7 @@ p {
 .footer-content .contact-info,
 .footer-content .quick-links {
     flex: 1;
+    margin-bottom: 10px;
 }
 
 .footer-content .social-media {
@@ -203,26 +110,44 @@ p {
     flex: 1;
 }
 
+.footer-content .social-media a {
+    margin: 0 10px;
+}
+
+.footer-content .social-media img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.footer-content .social-media img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Note */
 .footer-note {
     text-align: center;
     font-size: 14px;
     color: #bbb;
+    margin-top: 20px;
 }
 
-/* Social Media Icon Styles */
-/* Footer Social Media Icons */
-.social-media a {
-    margin: 0 10px;
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack footer content on smaller screens */
+        align-items: center;
+    }
+
+    .footer-content .contact-info,
+    .footer-content .quick-links,
+    .footer-content .social-media {
+        text-align: center;
+        margin-bottom: 15px;
+        flex: 0 0 100%; /* Ensure each section takes full width on smaller screens */
+    }
+
+    .footer-note {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
 }
-
-.social-media img {
-    width: 24px; /* Adjust this value to make the icons smaller */
-    height: 24px; /* Adjust this value to maintain aspect ratio */
-    transition: transform 0.3s ease;
-}
-
-.social-media img:hover {
-    transform: scale(1.1); /* Slight hover effect for icons */
-}
-
-

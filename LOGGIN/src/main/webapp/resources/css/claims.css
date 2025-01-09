@@ -1,4 +1,4 @@
-/* Content Section Styling */
+/* Claims Page Content Section */
 .content-container {
     max-width: 900px;
     margin: 40px auto;
@@ -9,7 +9,7 @@
     backdrop-filter: blur(10px); /* Frosted effect */
 }
 
-/* Title Styling */
+/* Claims Page Title */
 .content-container h2 {
     font-size: 28px;
     text-align: center;
@@ -17,7 +17,7 @@
     margin-bottom: 30px;
 }
 
-/* Form Styles */
+/* Claim Form Styles */
 form {
     display: flex;
     flex-direction: column;
@@ -82,18 +82,31 @@ form {
     margin-bottom: 20px;
 }
 
-.message h3 {
-    margin: 0;
-}
-
-/* Error message */
+/* Error Message */
 .error {
     background-color: #f2dede;
     color: #a94442;
     border: 1px solid #ebccd1;
 }
 
-/* Responsive Design */
+/* Submitted Claims Table Styling */
+.submitted-claims table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.submitted-claims th, .submitted-claims td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.submitted-claims th {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Design for Claims Page */
 @media (max-width: 768px) {
     .content-container {
         padding: 20px;

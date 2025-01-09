@@ -1,3 +1,5 @@
+<!-- insuranceProduct.jsp -->
+
 <%@ page import="java.util.*,java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -6,112 +8,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insurance Products</title>
-    <!-- Link to the global styles.css for layout and common design -->
     <link rel="stylesheet" href="resources/css/styles.css">
-    <!-- Custom CSS for insurance product specific styles -->
     <link rel="stylesheet" href="resources/css/insuranceProducts.css">
 </head>
 <body>
-	<%-- Session Validation --%>
 <%
-    // Get the session object without creating a new one
     HttpSession mysession = request.getSession(false);
-
-    // Check if the session exists and if the username attribute is set
     if (mysession == null || mysession.getAttribute("username") == null) {
-        // Redirect to login page if session is invalid
         response.sendRedirect("login.jsp");
         return;
     }
-
-    // Retrieve the username from the session
     String username = (String) mysession.getAttribute("username");
 %>
 
-    <!-- Navbar Section -->
-    <nav class="navbar">
-        <!-- Logo -->
-        <div class="logo">InsuranceApp</div>
+<nav class="navbar">
+    <div class="logo">InsuranceApp</div>
+    <ul>
+        <li><a href="welcome.jsp">InsuranceApp</a></li>
+        <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
+        <li><a href="insuranceProduct.jsp" class="active">Insurance Products</a></li>
+        <li><a href="faq.jsp">FAQ</a></li>
+        <li><a href="claims.jsp">Claims</a></li>
+        <li><a href="aboutUs.jsp">About Us</a></li>
+        <li><a href="LogoutServlet" class="logout">Logout</a></li>
+    </ul>
+</nav>
 
-        <!-- Navigation Links -->
-        <ul>
-            <li><a href="welcome.jsp">InsuranceApp</a></li>
-            <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
-            <li><a href="insuranceProduct.jsp" class="active">Insurance Products</a></li>
-            <li><a href="faq.jsp">FAQ</a></li>
-            <li><a href="claims.jsp">Claims</a></li>
-            <li><a href="aboutUs.jsp">About Us</a></li>
-            <li><a href="LogoutServlet" class="logout">Logout</a></li>
-        </ul>
-    </nav>
+<section class="product-list-section">
+    <h1>Our Insurance Products</h1>
 
-    <!-- Main Content Section -->
-    <section class="product-list-section">
-        <h1>Our Insurance Products</h1>
-
-        <%
-            // Database connection to fetch insurance products
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
-                    String query = "SELECT sr_no, product_name, plan_no, uin_no FROM insurance_products";
-                    try (PreparedStatement ps = con.prepareStatement(query);
-                         ResultSet rs = ps.executeQuery()) {
-                        if (rs.isBeforeFirst()) {
-        %>
-                            <table class="product-table">
-                                <thead>
-                                    <tr>
-                                        <th>Sr. No.</th>
-                                        <th>Product Name</th>
-                                        <th>Plan No.</th>
-                                        <th>UIN No.</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-        <%
-                            while (rs.next()) {
-                                int srNo = rs.getInt("sr_no");
-                                String productName = rs.getString("product_name");
-                                String planNo = rs.getString("plan_no");
-                                String uinNo = rs.getString("uin_no");
-        %>
-                                    <tr>
-                                        <td><%= srNo %></td>
-                                        <td><%= productName %></td>
-                                        <td><%= planNo %></td>
-                                        <td><%= uinNo %></td>
-                                    </tr>
-        <%
-                            }
-        %>
-                                </tbody>
-                            </table>
-        <%
-                        } else {
-        %>
-                            <p>No insurance products available at the moment.</p>
-        <%
+    <%
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
+                String query = "SELECT sr_no, product_name, plan_no, uin_no FROM insurance_products";
+                try (PreparedStatement ps = con.prepareStatement(query);
+                     ResultSet rs = ps.executeQuery()) {
+                    if (rs.isBeforeFirst()) {
+    %>
+                        <table class="product-table">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Product Name</th>
+                                    <th>Plan No.</th>
+                                    <th>UIN No.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+    <%
+                        while (rs.next()) {
+                            int srNo = rs.getInt("sr_no");
+                            String productName = rs.getString("product_name");
+                            String planNo = rs.getString("plan_no");
+                            String uinNo = rs.getString("uin_no");
+    %>
+                                <tr>
+                                    <td><%= srNo %></td>
+                                    <td><a href="productDetails.jsp?sr_no=<%= srNo %>"><%= productName %></a></td>
+                                    <td><%= planNo %></td>
+                                    <td><%= uinNo %></td>
+                                </tr>
+    <%
                         }
+    %>
+                            </tbody>
+                        </table>
+    <%
+                    } else {
+    %>
+                        <p>No insurance products available at the moment.</p>
+    <%
                     }
                 }
-            } catch (ClassNotFoundException | SQLException e) {
-                out.println("<p>Error fetching insurance products. Please try again later.</p>");
-                e.printStackTrace();
             }
-        %>
-    </section>
+        } catch (ClassNotFoundException | SQLException e) {
+            out.println("<p>Error fetching insurance products. Please try again later.</p>");
+            e.printStackTrace();
+        }
+    %>
+</section>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Insurance Co. All Rights Reserved.</p>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><strong>Address:</strong> 123 Insurance Ave, Finance City, Country</p>
+            <p><strong>Email:</strong> support@insurancehub.com</p>
+            <p><strong>Phone:</strong> +1 234 567 890</p>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
             <ul>
-                <li><a href="privacy.jsp">Privacy Policy</a></li>
-                <li><a href="terms.jsp">Terms of Service</a></li>
+                <li><a href="quoteCalculator.jsp">Get a Quote</a></li>
+                <li><a href="insuranceProduct.jsp">Our Products</a></li>
+                <li><a href="faq.jsp">FAQ</a></li>
+                <li><a href="claims.jsp">Submit a Claim</a></li>
             </ul>
         </div>
-    </footer>
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <p>
+                <a href="#"><img src="resources/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="resources/images/twitter.jpeg" alt="Twitter"></a>
+                <a href="#"><img src="resources/images/instagram.webp" alt="Instagram"></a>
+            </p>
+        </div>
+    </div>
+    <p class="footer-note">&copy; 2024 Insurance Hub. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
