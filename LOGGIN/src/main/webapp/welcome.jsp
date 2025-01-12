@@ -22,7 +22,7 @@
 
 <!-- Navbar Section -->
 <nav class="navbar">
-    <div class="logo">InsuranceApp</div>
+    <div class="logo">InsuranceHUB</div>
     <ul>
         <li><a href="welcome.jsp">Home</a></li>
         <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
