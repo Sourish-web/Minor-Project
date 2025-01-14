@@ -26,7 +26,7 @@
 <nav class="navbar">
     <div class="logo">InsuranceApp</div>
     <ul>
-        <li><a href="welcome.jsp">InsuranceApp</a></li>
+        <li><a href="welcome.jsp">Home</a></li>
         <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
         <li><a href="insuranceProduct.jsp">Insurance Products</a></li>
         <li><a href="faq.jsp">FAQ</a></li>

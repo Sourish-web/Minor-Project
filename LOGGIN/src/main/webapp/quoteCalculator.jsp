@@ -1,3 +1,5 @@
+<%@ page import="java.util.*,java.sql.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,25 +27,24 @@
     String username = (String) mysession.getAttribute("username");
 %>
 
-
     <!-- Navbar Section -->
-<nav class="navbar">
-    <!-- Logo -->
-    <div class="logo">InsuranceApp</div>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">InsuranceApp</div>
 
-    <!-- Navigation Links -->
-    <ul>
-        <li><a href="welcome.jsp">InsuranceApp</a></li>
-        <li><a href="quoteCalculator.jsp">Quote Calculator</a></li>
-        <li><a href="insuranceProduct.jsp">Insurance Products</a></li>
-        <li><a href="faq.jsp">FAQ</a></li>
-        <li><a href="claims.jsp">Claims</a></li>
-        <li><a href="aboutUs.jsp">About Us</a></li>
-        <!-- Show the username beside logout -->
-        <li><span class="username">Welcome, <%= username %></span></li>
-        <li><a href="LogoutServlet" class="logout">Logout</a></li>
-    </ul>
-</nav>
+        <!-- Navigation Links -->
+        <ul>
+            <li><a href="welcome.jsp">Home</a></li>
+            <li><a href="quoteCalculator.jsp" class="active">Quote Calculator</a></li>
+            <li><a href="insuranceProduct.jsp">Insurance Products</a></li>
+            <li><a href="faq.jsp">FAQ</a></li>
+            <li><a href="claims.jsp">Claims</a></li>
+            <li><a href="aboutUs.jsp">About Us</a></li>
+            <!-- Show the username beside logout -->
+            <li><span class="username">Welcome, <%= username %></span></li>
+            <li><a href="LogoutServlet" class="logout">Logout</a></li>
+        </ul>
+    </nav>
 
     <!-- Main Content Section -->
     <div class="main-container">
@@ -111,35 +112,36 @@
             </div>
         </div>
     </div>
+
     <!-- Footer Section -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="contact-info">
-            <h3>Contact Us</h3>
-            <p><strong>Address:</strong> 123 Insurance Ave, Finance City, Country</p>
-            <p><strong>Email:</strong> support@insurancehub.com</p>
-            <p><strong>Phone:</strong> +1 234 567 890</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><strong>Address:</strong> 123 Insurance Ave, Finance City, Country</p>
+                <p><strong>Email:</strong> support@insurancehub.com</p>
+                <p><strong>Phone:</strong> +1 234 567 890</p>
+            </div>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="quoteCalculator.jsp">Get a Quote</a></li>
+                    <li><a href="insuranceProduct.jsp">Our Products</a></li>
+                    <li><a href="faq.jsp">FAQ</a></li>
+                    <li><a href="claims.jsp">Submit a Claim</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <p>
+                    <a href="#"><img src="resources/images/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="resources/images/twitter.jpeg" alt="Twitter"></a>
+                    <a href="#"><img src="resources/images/instagram.webp" alt="Instagram"></a>
+                </p>
+            </div>
         </div>
-        <div class="quick-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="quoteCalculator.jsp">Get a Quote</a></li>
-                <li><a href="insuranceProduct.jsp">Our Products</a></li>
-                <li><a href="faq.jsp">FAQ</a></li>
-                <li><a href="claims.jsp">Submit a Claim</a></li>
-            </ul>
-        </div>
-        <div class="social-media">
-            <h3>Follow Us</h3>
-            <p>
-                <a href="#"><img src="resources/images/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="resources/images/twitter.jpeg" alt="Twitter"></a>
-                <a href="#"><img src="resources/images/instagram.webp" alt="Instagram"></a>
-            </p>
-        </div>
-    </div>
-    <p class="footer-note">&copy; 2024 Insurance Hub. All Rights Reserved.</p>
-</footer>
+        <p class="footer-note">&copy; 2024 Insurance Hub. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>

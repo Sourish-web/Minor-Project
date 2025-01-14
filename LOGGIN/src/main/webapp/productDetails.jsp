@@ -12,7 +12,7 @@
 <body>
 <%
     // Check user session
-    HttpSession mysession = request.getSession(false);
+    jakarta.servlet.http.HttpSession mysession = request.getSession(false);
     if (mysession == null || mysession.getAttribute("username") == null) {
         response.sendRedirect("login.jsp");
         return;
@@ -24,7 +24,7 @@
     String productName = "";
     String planNo = "";
     String uinNo = "";
-    String planDetails = ""; // Changed to match "plan_details" from the database
+    String planDetails = "";
 
     try {
         // Database connection
@@ -76,14 +76,16 @@
     <p><strong>Details:</strong></p>
     <p><%= planDetails %></p>
 
-    <form action="BuyProductServlet" method="post">
+    <!-- Razorpay Payment Form -->
+    <form action="CreateOrderServlet" method="post">
         <input type="hidden" name="sr_no" value="<%= productId %>">
+        <input type="hidden" name="product_name" value="<%= productName %>">
         <button type="submit">Buy Now</button>
     </form>
 </section>
 
 <footer class="footer">
-    <p>&copy; 2024 Insurance Hub. All Rights Reserved.</p>
+    <p>&copy; 2025 Insurance Hub. All Rights Reserved.</p>
 </footer>
 
 </body>

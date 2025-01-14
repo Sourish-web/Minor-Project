@@ -1,49 +1,63 @@
 package cscorner;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import java.io.*;
+import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/CalculateQuoteServlet")
 public class CalculateQuoteServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve the input parameters
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get the form data
         int age = Integer.parseInt(request.getParameter("age"));
-        double coverage = Double.parseDouble(request.getParameter("coverage"));
+        int coverage = Integer.parseInt(request.getParameter("coverage"));
         String plan = request.getParameter("plan");
         String location = request.getParameter("location");
 
-        // Initialize base premium
-        double basePremium = 1000; // Example base premium
+        // Calculate the premium
+        double premium = 0;
 
-        // Calculate premium based on age
-        if (age > 50) {
-            basePremium += 2000;  // Add more if the user is older
-        } else if (age < 25) {
-            basePremium -= 500;  // Discount for younger individuals
+        // Basic calculation logic
+        if (age <= 25) {
+            premium = 5000;
+        } else if (age <= 40) {
+            premium = 7000;
+        } else {
+            premium = 10000;
         }
 
-        // Adjust premium based on coverage
-        basePremium += (coverage / 1000) * 100;  // Example: coverage affects premium
+        // Adjust premium based on coverage amount
+        if (coverage > 1000000) {
+            premium += 3000;
+        } else if (coverage > 500000) {
+            premium += 2000;
+        } else {
+            premium += 1000;
+        }
 
-        // Modify premium based on plan type
+        // Adjust premium based on plan type
         if (plan.equals("family")) {
-            basePremium += 500;  // Add extra for family floater plans
+            premium *= 1.5;
         }
 
-        // Adjust for location
-        if (location.equals("rural")) {
-            basePremium -= 200;  // Discount for rural areas
+        // Adjust based on location
+        if (location.equals("urban")) {
+            premium *= 1.2;
         }
-
-        // Calculate the final quote
-        double calculatedQuote = basePremium;
 
         // Set the calculated quote as a request attribute
-        request.setAttribute("calculatedQuote", calculatedQuote);
+        request.setAttribute("calculatedQuote", premium);
 
-        // Forward the request and response to the JSP page
+        // Forward to the JSP page
         RequestDispatcher dispatcher = request.getRequestDispatcher("quoteCalculator.jsp");
         dispatcher.forward(request, response);
     }

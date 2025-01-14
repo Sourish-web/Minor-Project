@@ -1,5 +1,3 @@
-<!-- insuranceProduct.jsp -->
-
 <%@ page import="java.util.*,java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -41,7 +39,7 @@
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
-                String query = "SELECT sr_no, product_name, plan_no, uin_no FROM insurance_products";
+                String query = "SELECT sr_no, product_name, plan_no, uin_no, plan_details, coverage_amount, premium_amount, plan_duration FROM insurance_products";
                 try (PreparedStatement ps = con.prepareStatement(query);
                      ResultSet rs = ps.executeQuery()) {
                     if (rs.isBeforeFirst()) {
@@ -49,10 +47,14 @@
                         <table class="product-table">
                             <thead>
                                 <tr>
-                                    <th>Sr. No.</th>
                                     <th>Product Name</th>
                                     <th>Plan No.</th>
                                     <th>UIN No.</th>
+                                    <th>Details</th>
+                                    <th>Coverage</th>
+                                    <th>Premium</th>
+                                    <th>Duration</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,12 +64,20 @@
                             String productName = rs.getString("product_name");
                             String planNo = rs.getString("plan_no");
                             String uinNo = rs.getString("uin_no");
+                            String planDetails = rs.getString("plan_details");
+                            String coverageAmount = rs.getString("coverage_amount");
+                            String premiumAmount = rs.getString("premium_amount");
+                            String planDuration = rs.getString("plan_duration");
     %>
                                 <tr>
-                                    <td><%= srNo %></td>
-                                    <td><a href="productDetails.jsp?sr_no=<%= srNo %>"><%= productName %></a></td>
+                                    <td><%= productName %></td>
                                     <td><%= planNo %></td>
                                     <td><%= uinNo %></td>
+                                    <td><%= planDetails %></td>
+                                    <td><%= coverageAmount %></td>
+                                    <td><%= premiumAmount %></td>
+                                    <td><%= planDuration %></td>
+                                    <td><a href="payment.jsp?product_id=<%= srNo %>" class="buy-now-btn">Buy Now</a></td>
                                 </tr>
     <%
                         }
@@ -77,18 +87,19 @@
     <%
                     } else {
     %>
-                        <p>No insurance products available at the moment.</p>
+                        <p>No insurance products available at the moment. Please check back later or contact support for more information.</p>
     <%
                     }
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
-            out.println("<p>Error fetching insurance products. Please try again later.</p>");
             e.printStackTrace();
+            out.println("<p>Error fetching products. Please try again later or contact support.</p>");
         }
     %>
 </section>
 
+<!-- Footer Section -->
 <footer class="footer">
     <div class="footer-content">
         <div class="contact-info">

@@ -4,12 +4,10 @@
 <%@ page import="java.sql.*" %>
 
 <%
-    // Validate session
-    HttpSession mysession = request.getSession(false); // Get the session without creating a new one
+    HttpSession mysession = request.getSession(false);
     String adminUsername = (mysession != null) ? (String) mysession.getAttribute("adminUsername") : null;
 
     if (adminUsername == null) {
-        // No valid session, redirect to admin login page
         response.sendRedirect("adminLogin.jsp");
         return;
     }
@@ -25,7 +23,6 @@
     <link rel="stylesheet" href="resources/css/insuranceProducts.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
         <h1>Admin Dashboard</h1>
         <nav>
@@ -41,11 +38,8 @@
         </nav>
     </header>
 
-    <!-- Manage Insurance Products Section -->
     <section class="product-management">
         <h2>Manage Insurance Products</h2>
-        
-        <!-- Add New Product Form -->
         <h3>Add New Product</h3>
         <form action="AddInsuranceProductServlet" method="post">
             <label for="product_name">Product Name:</label><br>
@@ -60,17 +54,25 @@
             <label for="plan_details">Plan Details:</label><br>
             <textarea id="plan_details" name="plan_details" rows="4" cols="50" required></textarea><br><br>
 
+            <!-- Add more details -->
+            <label for="coverage_amount">Coverage Amount:</label><br>
+            <input type="text" id="coverage_amount" name="coverage_amount" required><br><br>
+
+            <label for="premium_amount">Premium Amount:</label><br>
+            <input type="text" id="premium_amount" name="premium_amount" required><br><br>
+
+            <label for="plan_duration">Plan Duration:</label><br>
+            <input type="text" id="plan_duration" name="plan_duration" required><br><br>
+
             <button type="submit">Add Product</button>
         </form>
 
-        <!-- Display Product List -->
         <h3>Existing Products</h3>
         <%
-            // Database connection to fetch all insurance products
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sourish", "root", "258025")) {
-                    String query = "SELECT sr_no, product_name, plan_no, uin_no, plan_details FROM insurance_products";
+                    String query = "SELECT sr_no, product_name, plan_no, uin_no, plan_details, coverage_amount, premium_amount, plan_duration FROM insurance_products";
                     try (PreparedStatement ps = con.prepareStatement(query);
                          ResultSet rs = ps.executeQuery()) {
                         if (rs.isBeforeFirst()) {
@@ -83,6 +85,9 @@
                                         <th>Plan No.</th>
                                         <th>UIN No.</th>
                                         <th>Plan Details</th>
+                                        <th>Coverage Amount</th>
+                                        <th>Premium Amount</th>
+                                        <th>Plan Duration</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -94,6 +99,9 @@
                                 String planNo = rs.getString("plan_no");
                                 String uinNo = rs.getString("uin_no");
                                 String planDetails = rs.getString("plan_details");
+                                String coverageAmount = rs.getString("coverage_amount");
+                                String premiumAmount = rs.getString("premium_amount");
+                                String planDuration = rs.getString("plan_duration");
         %>
                                     <tr>
                                         <td><%= srNo %></td>
@@ -101,6 +109,9 @@
                                         <td><%= planNo %></td>
                                         <td><%= uinNo %></td>
                                         <td><%= planDetails %></td>
+                                        <td><%= coverageAmount %></td>
+                                        <td><%= premiumAmount %></td>
+                                        <td><%= planDuration %></td>
                                         <td>
                                             <a href="editInsuranceProduct.jsp?sr_no=<%= srNo %>">Edit</a> | 
                                             <form action="DeleteInsuranceProductServlet" method="post" style="display:inline;">
@@ -129,7 +140,6 @@
         %>
     </section>
 
-    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Admin Dashboard</p>
     </footer>

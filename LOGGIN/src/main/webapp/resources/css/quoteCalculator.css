@@ -1,114 +1,92 @@
-/* Main Content Container */
+
+
+/* Main Container Styles */
 .main-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh;
-    background-color: transparent; /* To match the global background */
+    padding: 30px 10px;
 }
 
 .content-wrapper {
-    width: 90%;
-    max-width: 1200px;
-    background-color: rgba(255, 255, 255, 0.8); /* Transparent White */
+    width: 70%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Heading Styles */
-.content-wrapper h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Calculator Container Grid */
 .calculator-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
-/* Rules Section */
 .rules {
-    background-color: rgba(230, 247, 255, 0.8); /* Light blue */
+    width: 45%;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.rules h3 {
-    margin-bottom: 15px;
-    color: #333;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .rules ul {
-    list-style-type: square;
-    padding-left: 20px;
+    line-height: 1.8;
 }
 
-.rules li {
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-/* Quote Form Section */
 .quote-form-section {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+    width: 45%;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .quote-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-
-.form-group {
     display: flex;
     flex-direction: column;
 }
 
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 14px;
+.form-group {
+    margin-bottom: 20px;
 }
 
-.form-group input,
-.form-group select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+input[type="number"],
+select {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.form-group input[type="submit"],
-.form-group input[type="reset"] {
-    background-color: #007bff;
-    color: #fff;
+input[type="submit"],
+input[type="reset"] {
+    background-color: #007BFF;
+    color: white;
     border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    padding: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.form-group input[type="submit"]:hover,
-.form-group input[type="reset"]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background-color: #0056b3;
 }
 
-/* Quote Result Section */
+/* Quote Result Styling */
 .quote-result {
     margin-top: 20px;
-    padding: 15px;
-    background-color: rgba(240, 255, 240, 0.9); /* Light green */
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
+    background-color: #e7f3ff;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #333;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }

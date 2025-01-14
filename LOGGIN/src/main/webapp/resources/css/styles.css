@@ -1,4 +1,5 @@
 /* Global Styles */
+/*styles.css*/
 
 body {
     font-family: Arial, sans-serif;
@@ -54,6 +55,15 @@ body {
     color: white;
 }
 
+/* Username Styling */
+.navbar .username {
+    font-size: 16px;
+    color: #FFD700; /* Golden color for username text */
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
 /* InsuranceApp Logo Style */
 .navbar .logo {
     font-size: 28px;
@@ -75,53 +85,95 @@ body {
 }
 
 /* Footer Section */
+/* Footer Section */
+/* Footer Section */
 .footer {
     background-color: rgba(51, 51, 51, 0.8); /* Transparent dark background */
     color: #fff;
-    padding: 20px;
+    padding: 40px 20px; /* Increased padding for a cleaner look */
     width: 100%;
-    position: sticky; /* Ensures footer sticks to the bottom of the page */
-    bottom: 0;
     margin-top: auto; /* Pushes the footer to the bottom when there's less content */
+    font-size: 14px;
+    line-height: 1.6; /* Improve text readability */
+    border-top: 3px solid #FF4500; /* Add a top border for visual separation */
 }
 
+/* Footer Content Layout */
 .footer-content {
     display: flex;
     flex-wrap: wrap; /* Allow footer content to wrap on smaller screens */
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 20px;
+    gap: 20px; /* Add spacing between footer sections */
 }
 
 .footer-content h3 {
     margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #FFD700; /* Golden color for section headings */
+    text-transform: uppercase;
+    border-bottom: 2px solid #FFD700; /* Add an underline for emphasis */
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
+/* Footer Contact Info */
 .footer-content .contact-info,
 .footer-content .quick-links {
     flex: 1;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
+.footer-content .contact-info p,
+.footer-content .quick-links a {
+    margin: 5px 0; /* Spacing between items */
+    color: #bbb;
+}
+
+.footer-content .contact-info p {
+    font-size: 14px;
+}
+
+.footer-content .quick-links a {
+    text-decoration: none;
+    color: #FFD700; /* Golden color for links */
+    transition: color 0.3s ease;
+}
+
+.footer-content .quick-links a:hover {
+    color: #fff; /* Change link color on hover */
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
 .footer-content .social-media {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex: 1;
+    justify-content: center;
+    gap: 15px; /* Space between social media icons */
+    margin-top: 10px;
 }
 
 .footer-content .social-media a {
-    margin: 0 10px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: #333; /* Background for social media icons */
+    border-radius: 50%; /* Circular icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-.footer-content .social-media img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
+.footer-content .social-media a img {
+    width: 20px;
+    height: 20px;
 }
 
-.footer-content .social-media img:hover {
-    transform: scale(1.1);
+.footer-content .social-media a:hover {
+    background-color: #FF4500; /* Bright red-orange on hover */
 }
 
 /* Footer Note */
@@ -130,6 +182,8 @@ body {
     font-size: 14px;
     color: #bbb;
     margin-top: 20px;
+    border-top: 1px solid #555; /* Top border for separation */
+    padding-top: 10px;
 }
 
 /* Responsive Design for Footer */
@@ -137,14 +191,14 @@ body {
     .footer-content {
         flex-direction: column; /* Stack footer content on smaller screens */
         align-items: center;
+        text-align: center;
     }
 
     .footer-content .contact-info,
     .footer-content .quick-links,
     .footer-content .social-media {
-        text-align: center;
-        margin-bottom: 15px;
         flex: 0 0 100%; /* Ensure each section takes full width on smaller screens */
+        margin-bottom: 20px;
     }
 
     .footer-note {
